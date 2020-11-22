@@ -1,19 +1,21 @@
-class Ship # < ActiveRecord::Base 
-    attr_accessor :name, :type, :booty 
-    @@all = []
 
-    def initialize(params)
-        @name = params[:name] 
-        @type = params[:type] 
-        @booty = params[:booty] 
-        @@all << self 
-    end 
+class Ship
+  attr_reader :name, :type, :booty
 
-    def self.all
-        @@all
-    end 
+  @@ships = []
 
-    def self.clear 
-        @@all.clear 
-    end 
+  def initialize(args)
+    @name = args[:name]
+    @type = args[:type]
+    @booty = args[:booty]
+    @@ships << self
+  end
+
+  def self.all
+    @@ships
+  end
+
+  def self.clear
+    @@ships = []
+  end
 end
